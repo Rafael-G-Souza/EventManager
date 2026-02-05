@@ -1,11 +1,3 @@
-﻿📝 Passo 1: Criar o Arquivo
-No VS Code, clique na pasta raiz Projeto Eventos (a pasta mãe de todas).
-
-Crie um novo arquivo chamado README.md (tem que ser maiúsculo e terminar com .md).
-
-Copie o código abaixo e cole dentro desse arquivo:
-
-```Markdown
 # 🚀 EventManager
 
 Sistema completo para gerenciamento de eventos (CRUD), desenvolvido com arquitetura moderna Full Stack.
@@ -39,6 +31,7 @@ Sistema completo para gerenciamento de eventos (CRUD), desenvolvido com arquitet
 ```bash
 cd EventManager.API
 dotnet run
+```
 A API rodará em: http://localhost:5058 (ou porta similar)
 
 2. Rodando o Front-end
@@ -46,6 +39,7 @@ A API rodará em: http://localhost:5058 (ou porta similar)
 cd EventManager.Web
 npm install
 ng serve
+```
 Acesse o projeto em: http://localhost:4200
 
 Desenvolvido por Rafael Souza 💻
