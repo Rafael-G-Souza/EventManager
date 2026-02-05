@@ -1,0 +1,17 @@
+# Ignorar arquivos do Visual Studio
+.vs/
+.vscode/
+
+# Ignorar arquivos de compilação do C#
+bin/
+obj/
+
+# Ignorar arquivos de dependências do Angular (MUITO IMPORTANTE)
+node_modules/
+dist/
+
+# Ignorar arquivos de banco de dados local
+*.db
+*.sqlite
+*.db-shm
+*.db-wal

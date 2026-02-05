@@ -1,0 +1,96 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary mb-4 shadow">
+  <div class="container">
+    <a class="navbar-brand fw-bold" href="#">
+      🚀 EventManager
+    </a>
+  </div>
+</nav>
+
+<div class="container">
+
+  <div class="row">
+    <div class="col-md-4 mb-4">
+      <div class="card shadow-sm sticky-top" style="top: 20px;">
+        <div class="card-header bg-white fw-bold text-primary">
+          {{ modoEdicao ? '✏️ Editar Evento' : '➕ Novo Evento' }}
+        </div>
+        <div class="card-body">
+          <form (ngSubmit)="salvar()">
+
+            <div class="mb-3">
+              <label class="form-label">Título</label>
+              <input type="text" class="form-control" [(ngModel)]="novoEvento.title" name="title" placeholder="Ex: Churrasco da Firma">
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label">Descrição</label>
+              <input type="text" class="form-control" [(ngModel)]="novoEvento.description" name="description" placeholder="Detalhes do evento...">
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label">Local</label>
+              <input type="text" class="form-control" [(ngModel)]="novoEvento.location" name="location" placeholder="Ex: Salão de Festas">
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label">Data</label>
+              <input type="datetime-local" class="form-control" [(ngModel)]="novoEvento.date" name="date">
+            </div>
+
+            <div class="d-grid gap-2">
+              <button type="submit" class="btn" [ngClass]="modoEdicao ? 'btn-warning text-dark' : 'btn-success'">
+                {{ modoEdicao ? 'Atualizar Alterações' : 'Salvar Evento' }}
+              </button>
+
+              <button *ngIf="modoEdicao" type="button" class="btn btn-outline-secondary" (click)="limparFormulario()">
+                Cancelar Edição
+              </button>
+            </div>
+
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-8">
+      <h4 class="mb-3 text-secondary">📅 Próximos Eventos</h4>
+
+      <div *ngIf="events.length === 0" class="alert alert-info text-center">
+        Nenhum evento cadastrado. Que tal criar um agora?
+      </div>
+
+      <div class="row">
+        <div *ngFor="let event of events" class="col-12 mb-3">
+          <div class="card shadow-sm border-0 h-100">
+            <div class="card-body position-relative">
+
+              <div class="position-absolute top-0 end-0 p-3">
+                <button (click)="preencherParaEdicao(event)" class="btn btn-sm btn-outline-warning me-1" title="Editar">
+                  ✏️
+                </button>
+                <button (click)="excluir(event.id)" class="btn btn-sm btn-outline-danger" title="Excluir">
+                  🗑️
+                </button>
+              </div>
+
+              <h5 class="card-title text-primary fw-bold">{{ event.title }}</h5>
+              <h6 class="card-subtitle mb-2 text-muted">
+                📍 {{ event.location }}
+              </h6>
+
+              <p class="card-text mt-3">
+                {{ event.description }}
+              </p>
+
+              <div class="text-muted small border-top pt-2 mt-2">
+                📅 {{ event.date | date:'dd/MM/yyyy' }} às {{ event.date | date:'HH:mm' }}
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
